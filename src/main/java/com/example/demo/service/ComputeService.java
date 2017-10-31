@@ -12,6 +12,7 @@ public class ComputeService {
 	@Autowired
 	RestTemplate restTemplate;
 	
+	//增加@HystrixCommand注解来指定回调方法
 	@HystrixCommand(fallbackMethod="addServiceFallback")
 	public String add() {
 		return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a=11&b=21", String.class)
